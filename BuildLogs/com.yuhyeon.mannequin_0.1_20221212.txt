@@ -1,0 +1,80 @@
+[World Settings]
+world id             com.yuhyeon.mannequin
+version              0.1                 
+max clients          8                   
+orientation          horizontal          
+disable invite       false               
+disable room list    false               
+disable private room false               
+
+[Build Manifest]
+[scenes]
+11 mb                assets/1.mannequinsample/scene/mannequinsamplev2.unity
+[assets]
+604 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-1_comp_dir.png
+444 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-3_comp_light.exr
+13 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_base.png
+560 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/idle.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_off.anim
+35 kb                packages/zepeto.character.controller/runtime/_resources/inputactions/zepetoinputcontrol.inputactions
+600 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landing_slight.anim
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action1.anim
+1 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.png
+112 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-3_comp_dir.png
+130 kb               assets/1.mannequinsample/scene/mannequinsamplev2/reflectionprobe-0.exr
+295 kb               packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimatorv2.controller
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/4_ok.anim
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_ziggle.anim
+1 kb                 assets/1.mannequinsample/scene/new lighting settings.lighting
+374 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_run_fast.anim
+828 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_turn.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_on.anim
+342 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-2_comp_dir.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/walk.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landing_deep.anim
+445 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_run.anim
+331 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-0_comp_dir.png
+5 kb                 packages/zepeto.mannequin/runtime/images/button_clothes.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_idle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_move.anim
+1 mb                 assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-2_comp_light.exr
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_horizontal.prefab
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_off.anim
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandleorigin.controller
+574 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landing_roll.anim
+330 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/falling.anim
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action2.anim
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_vertical.prefab
+900 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-4_comp_light.exr
+305 kb               assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-4_comp_dir.png
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_icon.png
+618 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_idle.anim
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/stamp.anim
+1 kb                 packages/com.unity.inputsystem/inputsystem/editor/icons/inputsystemuiinputmodule@64.png
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_icon.png
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandle.controller
+1 mb                 assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-0_comp_light.exr
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_dash.anim
+1 mb                 assets/1.mannequinsample/scene/mannequinsamplev2/lightmap-1_comp_light.exr
+6 mb                 packages/zepeto.mannequin/runtime/images/mannequin_face.png
+1 kb                 packages/zepeto.character.controller/runtime/_resources/camera/zepetocamera.prefab
+940 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/run.anim
+489 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_walk_fast.anim
+3 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/charactershadow.prefab
+12 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_base.png
+442 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_move.anim
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/gesture.anim
+29 kb                assets/1.mannequinsample/scene/mannequinsamplev2/lightingdata.asset
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_walk.anim
+18 kb                packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimator.controller
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.mat
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/eventsystem.prefab
+1014 kb              packages/zepeto.character.controller/runtime/_resources/animations/base/v2/idle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/fall_end.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_on.anim
+464 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_double.anim
+428 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/hand_idle_01.anim
+31 kb                packages/com.unity.inputsystem/inputsystem/plugins/playerinput/defaultinputactions.inputactions
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_ziggle.anim
+[resources]
+[streamingAssets]

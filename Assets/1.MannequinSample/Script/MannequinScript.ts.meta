@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+guid: e4272bd453e0b4d06b8c5686f7ccbf00
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_World_1 = require(\"ZEPETO.World\");\r\nconst ZEPETO_Mannequin_1 = require(\"ZEPETO.Mannequin\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nclass MannequinScript extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    ZEPETO_World_1.WorldService.userId, ZEPETO_Character_Controller_1.SpawnInfo.Default,
+    true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\r\n            var character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\r\n           
+    //Add Mannequin Interactable Component\r\n            character.gameObject.AddComponent($typeof(ZEPETO_Mannequin_1.MannequinInteractable));\r\n       
+    });\r\n        //Find all Mannequin components\r\n        const mannequins =
+    UnityEngine_1.Object.FindObjectsOfType($typeof(ZEPETO_Mannequin_1.MannequinComponent));\r\n       
+    mannequins.forEach(m => {\r\n            //Enter the Collider\r\n           
+    m.onActive.AddListener(contents => {\r\n                ZEPETO_Mannequin_1.Mannequin.OpenUI(contents);\r\n               
+    var zepetoContext = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Context;\r\n               
+    this._previewer = new ZEPETO_Mannequin_1.MannequinPreviewer(zepetoContext, contents);\r\n               
+    this._previewer.PreviewContents();\r\n            });\r\n            //Exit the
+    Collider\r\n            m.onCancel.AddListener(() => {\r\n                ZEPETO_Mannequin_1.Mannequin.CloseUI();\r\n               
+    this._previewer?.ResetContents();\r\n            });\r\n        });\r\n    }\r\n}\r\nexports.default
+    = MannequinScript;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWFubmVxdWluU2NyaXB0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTWFubmVxdWluU2NyaXB0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQXNEO0FBQ3RELDZFQUFxRTtBQUNyRSwrQ0FBMEM7QUFDMUMsdURBQStIO0FBQy9ILDZDQUFtQztBQUVuQyxNQUFxQixlQUFnQixTQUFRLHFDQUFxQjtJQUk5RCxLQUFLO1FBQ0QsaUVBQXVCLHNCQUFzQixDQUE3QywyQ0FBYSxDQUFDLFFBQVEsRUFBd0IsMkJBQVksQ0FBQyxNQUFNLEVBQUUsdUNBQVMsQ0FBQyxPQUFPLEVBQUUsSUFBSSxFQUFFO1FBRTVGLDJDQUFhLENBQUMsUUFBUSxDQUFDLGtCQUFrQixDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7WUFDdkQsSUFBSSxTQUFTLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUM7WUFDMUUsc0NBQXNDO1lBQ3RDLFNBQVMsQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLHdDQUFxQixHQUFJO1FBQy9ELENBQUMsQ0FBQyxDQUFDO1FBRUgsK0JBQStCO1FBQy9CLE1BQU0sVUFBVSxHQUFHLG9CQUFNLENBQUMsaUJBQWlCLFNBQUMscUNBQWtCLEVBQUcsQ0FBQztRQUVsRSxVQUFVLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxFQUFFO1lBQ25CLG9CQUFvQjtZQUNwQixDQUFDLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxRQUFRLENBQUMsRUFBRTtnQkFDOUIsNEJBQVMsQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLENBQUM7Z0JBQzNCLElBQUksYUFBYSxHQUFHLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQztnQkFDdEYsSUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLHFDQUFrQixDQUFDLGFBQWEsRUFBRSxRQUFRLENBQUMsQ0FBQztnQkFDbEUsSUFBSSxDQUFDLFVBQVUsQ0FBQyxlQUFlLEVBQUUsQ0FBQztZQUN0QyxDQUFDLENBQUMsQ0FBQztZQUVILG1CQUFtQjtZQUNuQixDQUFDLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUU7Z0JBQ3hCLDRCQUFTLENBQUMsT0FBTyxFQUFFLENBQUM7Z0JBQ3BCLElBQUksQ0FBQyxVQUFVLEVBQUUsYUFBYSxFQUFFLENBQUM7WUFDckMsQ0FBQyxDQUFDLENBQUM7UUFDUCxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7Q0FDSjtBQWhDRCxrQ0FnQ0MifQ==","assetPath":"Assets/1.MannequinSample/Script/MannequinScript.ts","manifest":{"properties":[],"name":"MannequinScript","description":""},"isCompiled":true}'
+  typescriptHash: 048d06f3fef120b96e1219556b24cd0b
+  onlyWriteTrigger: 0
