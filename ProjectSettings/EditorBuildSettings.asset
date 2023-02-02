@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/1.MannequinSample/Scene/Multi/MannequinMultiSample.unity
+    guid: b3f75f956c8034a9e96db874bfbd6f51
   m_configObjects: {}

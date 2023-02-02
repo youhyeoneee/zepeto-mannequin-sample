@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: -1306908037, guid: 944713d6c9caf4609ae4f76569420317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playablePlatforms: 48
+  playablePlatforms: 240
   playWithMultiplayServer: 0
   autoRestartMultiplayServer: 0
   activeWorldSetting: 

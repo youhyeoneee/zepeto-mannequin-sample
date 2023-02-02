@@ -1,0 +1,102 @@
+fileFormatVersion: 2
+guid: 86273b291a9be473b9e988c718d88e3d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    ZEPETO_Multiplay_1 = require(\"ZEPETO.Multiplay\");\r\nconst ZEPETO_Mannequin_1
+    = require(\"ZEPETO.Mannequin\");\r\nconst ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst ZEPETO_World_1 = require(\"ZEPETO.World\");\r\nclass
+    CharacterItem {\r\n}\r\nclass ChangedItem {\r\n}\r\nclass MannequinController
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n       
+    super(...arguments);\r\n        this.MESSAGE_TYPE = {\r\n            OnChangedItem:
+    \"OnChangedItem\",\r\n            SyncChangedItem: \"SyncChangedItem\",\r\n           
+    CheckChangedItem: \"CheckChangedItem\"\r\n        };\r\n        this._userZepetoContexts
+    = new Map();\r\n        this._currentMannequinComponent = null;\r\n        this._selectMannequinComponent
+    = null;\r\n        this._isOpenMannequinUI = false;\r\n        this._basicClothString
+    = \"basicCloth\";\r\n    }\r\n    Start() {\r\n        this.multiplay = UnityEngine_1.Object.FindObjectOfType($typeof(ZEPETO_World_1.ZepetoWorldMultiplay));\r\n       
+    ZEPETO_Mannequin_1.Mannequin.OnOpenedShopUI.AddListener((item) => {\r\n           
+    // When you click OpenShopButton\r\n            this.OpenedShopUI(item);\r\n       
+    });\r\n        ZEPETO_Mannequin_1.Mannequin.OnClosedShopUI.AddListener(() =>
+    {\r\n            // When you click CloseShopButton\r\n            this.ClosedShopUI();\r\n       
+    });\r\n        ZEPETO_Mannequin_1.Mannequin.OnSelectedItem.AddListener((itemcontent,
+    select) => {\r\n            // Action when item is selected\r\n        });\r\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\r\n            const myPlayer = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer;\r\n           
+    // Mannequin\r\n            const character = myPlayer.character;\r\n           
+    character.gameObject.AddComponent($typeof(ZEPETO_Mannequin_1.MannequinInteractable));\r\n           
+    console.log(\"local _context set\");\r\n            this._context = character.Context;\r\n           
+    const mannequins = UnityEngine_1.Object.FindObjectsOfType($typeof(ZEPETO_Mannequin_1.MannequinComponent));\r\n           
+    mannequins.forEach(mannequin => {\r\n                // When you enter mannequin
+    collider\r\n                mannequin.onActive.AddListener(contents => {\r\n                   
+    if (this._currentMannequinComponent != null && this._currentMannequinComponent
+    == mannequin) {\r\n                        return;\r\n                    }\r\n                   
+    if (contents == null || contents.length == 0) {\r\n                        console.log(\"No
+    mannequin data\");\r\n                        return;\r\n                   
+    }\r\n                    if (this._isOpenMannequinUI) {\r\n                       
+    this.BreakMannequin();\r\n                    }\r\n                    this._selectMannequinComponent
+    = mannequin;\r\n                    ZEPETO_Mannequin_1.Mannequin.OpenUI(contents);\r\n                   
+    console.log(\"onActive\");\r\n                });\r\n                // [Option]
+    When you leave mannequin collider\r\n                mannequin.onCancel.AddListener(()
+    => {\r\n                    if (this._currentMannequinComponent == null || this._currentMannequinComponent
+    != mannequin) {\r\n                        return;\r\n                    }\r\n                   
+    this.BreakMannequin();\r\n                    console.log(\"onCancel\");\r\n               
+    });\r\n                let iconCanvas = mannequin.gameObject.GetComponentInChildren($typeof(UnityEngine_1.Canvas),
+    true);\r\n                if (iconCanvas != null) {\r\n                    iconCanvas.gameObject.layer
+    = UnityEngine_1.LayerMask.NameToLayer(\"UI\");\r\n                }\r\n           
+    });\r\n        });\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedPlayer.AddListener((sessionId)
+    => {\r\n            if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.GetPlayer(sessionId).isLocalPlayer)
+    {\r\n                return;\r\n            }\r\n            const userContext
+    = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.GetPlayer(sessionId).character.Context;\r\n           
+    this._userZepetoContexts.set(sessionId, userContext);\r\n            this._room.Send(this.MESSAGE_TYPE.CheckChangedItem,
+    sessionId);\r\n        });\r\n        this.multiplay.add_RoomJoined((room) =>
+    {\r\n            this._room = room;\r\n            this.AddMessageHandler();\r\n       
+    });\r\n    }\r\n    AddMessageHandler() {\r\n        // [Option] Synchronize
+    each player''s clothes\r\n        this._room.AddMessageHandler($typeof(ChangedItem),
+    this.MESSAGE_TYPE.SyncChangedItem, message => {\r\n            console.log(\"syncChangedItem\");\r\n           
+    if (message == null) {\r\n                return;\r\n            }\r\n           
+    if (false == this._userZepetoContexts.has(message.sessionId)) {\r\n               
+    return;\r\n            }\r\n            let itemContents = [];\r\n           
+    for (const characterItem of message.characterItems) {\r\n                let
+    itemContent = new ZEPETO_Mannequin_1.ItemContent();\r\n                itemContent.id
+    = characterItem.id;\r\n                itemContent.property = parseInt(characterItem.property);\r\n               
+    if (itemContent.id == this._basicClothString) {\r\n                    itemContent.id
+    = \"\";\r\n                }\r\n                itemContents.push(itemContent);\r\n           
+    }\r\n            let clothesPreviewer = new ZEPETO_Mannequin_1.ClothesPreviewer(this._userZepetoContexts.get(message.sessionId),
+    itemContents);\r\n            clothesPreviewer.PreviewContents();\r\n       
+    });\r\n    }\r\n    ClosedShopUI() {\r\n        this._currentMannequinComponent
+    = null;\r\n        this._isOpenMannequinUI = false;\r\n    }\r\n    OpenedShopUI(items)
+    {\r\n        this._isOpenMannequinUI = true;\r\n        this._currentMannequinComponent
+    = this._selectMannequinComponent;\r\n        this._previewer = new ZEPETO_Mannequin_1.MannequinPreviewer(this._context,
+    items);\r\n        this._previewer.OnChanged.AddListener((changeValues) => {\r\n           
+    let characterItems = [];\r\n            for (const changeValue of changeValues)
+    {\r\n                let characterItem = new CharacterItem();\r\n               
+    characterItem.id = changeValue.id;\r\n                characterItem.property
+    = changeValue.property.toString();\r\n                if (characterItem.id ==
+    \"\") {\r\n                    characterItem.id = this._basicClothString;\r\n               
+    }\r\n                characterItems.push(characterItem);\r\n            }\r\n           
+    this._room.Send(this.MESSAGE_TYPE.OnChangedItem, characterItems);\r\n       
+    });\r\n        this._previewer.PreviewContents();\r\n    }\r\n    BreakMannequin()
+    {\r\n        ZEPETO_Mannequin_1.Mannequin.CloseUI();\r\n        if (this._previewer)
+    {\r\n            this._previewer.ResetContents();\r\n            this._previewer
+    = null;\r\n        }\r\n        this._currentMannequinComponent = null;\r\n       
+    this._isOpenMannequinUI = false;\r\n    }\r\n}\r\nexports.default = MannequinController;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWFubmVxdWluQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk1hbm5lcXVpbkNvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBc0Q7QUFDdEQsdURBQXdDO0FBQ3hDLHVEQUFnSztBQUVoSyw2RUFBMEU7QUFDMUUsNkNBQTRGO0FBRTVGLCtDQUFvRDtBQUVwRCxNQUFNLGFBQWE7Q0FHbEI7QUFFRCxNQUFNLFdBQVc7Q0FHaEI7QUFFRCxNQUFxQixtQkFBb0IsU0FBUSxxQ0FBcUI7SUFBdEU7O1FBQ1ksaUJBQVksR0FBRztZQUNuQixhQUFhLEVBQUUsZUFBZTtZQUM5QixlQUFlLEVBQUUsaUJBQWlCO1lBQ2xDLGdCQUFnQixFQUFFLGtCQUFrQjtTQUN2QyxDQUFBO1FBT08sd0JBQW1CLEdBQStCLElBQUksR0FBRyxFQUF5QixDQUFDO1FBQ25GLCtCQUEwQixHQUF1QixJQUFJLENBQUM7UUFDdEQsOEJBQXlCLEdBQXVCLElBQUksQ0FBQztRQUNyRCx1QkFBa0IsR0FBWSxLQUFLLENBQUM7UUFFcEMsc0JBQWlCLEdBQUcsWUFBcUIsQ0FBQztJQXNKdEQsQ0FBQztJQXBKRyxLQUFLO1FBQ0QsSUFBSSxDQUFDLFNBQVMsR0FBRyxvQkFBTSxDQUFDLGdCQUFnQixTQUFDLG1DQUFvQixFQUFHLENBQUM7UUFFakUsNEJBQVMsQ0FBQyxjQUFjLENBQUMsV0FBVyxDQUFDLENBQUMsSUFBSSxFQUFFLEVBQUU7WUFDMUMsZ0NBQWdDO1lBQ2hDLElBQUksQ0FBQyxZQUFZLENBQUMsSUFBSSxDQUFDLENBQUE7UUFDM0IsQ0FBQyxDQUFDLENBQUM7UUFDSCw0QkFBUyxDQUFDLGNBQWMsQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ3RDLGlDQUFpQztZQUNqQyxJQUFJLENBQUMsWUFBWSxFQUFFLENBQUE7UUFDdkIsQ0FBQyxDQUFDLENBQUM7UUFDSCw0QkFBUyxDQUFDLGNBQWMsQ0FBQyxXQUFXLENBQUMsQ0FB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","assetPath":"Assets/1.MannequinSample/Scene/Multi/MannequinController.ts","manifest":{"properties":[],"name":"CharacterItem","description":""},"isCompiled":true}'
+  typescriptHash: be1ad4e9d27d74b8e15b64c08d9c3e61
+  onlyWriteTrigger: 0
