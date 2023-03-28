@@ -1,5 +1,5 @@
 # zepeto-mannequin-sample
-ZEPETO Mannequin API 활용한 싱글 플레이 월드
+ZEPETO Mannequin API 활용한 멀티 플레이 월드
 
 ## Screenshots
 ![World Screenshot2](https://user-images.githubusercontent.com/37354574/207000220-98556520-8b54-49c5-bf00-303a76d0e7f1.png)
@@ -18,4 +18,4 @@ ZEPETO Mannequin API 활용한 싱글 플레이 월드
 - 0.1 : 월드 출시 (2022.12.12)
 
 ### Ver.1
-- 1.0 : 버그 수정 (예정)
+- 1.0 : 멀티 플레이, 스크린샷 추가
