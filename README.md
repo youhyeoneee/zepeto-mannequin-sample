@@ -7,7 +7,7 @@ ZEPETO Mannequin API 활용한 멀티 플레이 월드
 <img width="1440" alt="mq-purchase-1" src="https://user-images.githubusercontent.com/37354574/207000531-38d0880e-54a6-43bd-ab69-38d005a038a0.png">
 
 ## Develop Environment
-- zepeto world : 3.18.0
+- zepeto world : 1.13.0
 
 ## Liabrary
 - [ZEPETO Mannequin](https://studio.zepeto.me/ko/guides/zepeto-mannequin)
